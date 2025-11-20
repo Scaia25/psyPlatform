@@ -1,0 +1,128 @@
+# Requirement — User Requirements Collected Through Interview With a Psychologist
+
+The following requirements were collected through a simulated interview with a professional psychologist who regularly uses digital tools to manage patients.  
+The 30 questions explore needs, challenges, expectations, and desired features for a platform like PsyPlatform.
+
+---
+
+## 1. Interview Questionnaire (30 Questions + Answers)
+
+1. **What is your biggest difficulty when managing patients?**  
+   Handling appointments and last-minute cancellations.
+
+2. **How do you currently manage your calendar?**  
+   I use Google Calendar, but it’s not designed for clinical work.
+
+3. **Do patients often forget their appointments?**  
+   Yes, especially new patients or during online sessions.
+
+4. **Would automatic reminders help?**  
+   Absolutely, they would reduce many missed sessions.
+
+5. **How do you currently take clinical notes after a session?**  
+   I use an encrypted Word file, but it’s not very practical.
+
+6. **What would help you take notes more quickly?**  
+   A fast interface with predefined fields and quick notes.
+
+7. **Do you prefer free-text notes or structured sections?**  
+   Both: free-text plus some required structured fields.
+
+8. **How do you store patient documents?**  
+   In separate folders, which is not ideal for security.
+
+9. **Would you like automatic document organization?**  
+   Yes, it would be extremely useful.
+
+10. **Do you conduct online therapy sessions?**  
+    Yes, almost half of my sessions are online.
+
+11. **What is the biggest issue with current videocall tools?**  
+    Stability and audio quality.
+
+12. **Would you like videocalls integrated into the platform?**  
+    Yes, it would save time and reduce confusion.
+
+13. **Would a visible session timer help?**  
+    Yes, it helps manage time effectively.
+
+14. **How do you communicate with patients outside sessions?**  
+    Mostly via email or WhatsApp, which is not ideal for privacy.
+
+15. **Would a secure dedicated chat be helpful?**  
+    Absolutely yes.
+
+16. **Would you like to send documents through the platform?**  
+    Yes, instead of email attachments.
+
+17. **How do patients request new appointments?**  
+    Many text me on WhatsApp, which gets messy.
+
+18. **Would you like patients to see your availability directly?**  
+    Yes, it would save a lot of time.
+
+19. **Do you need to limit how many people can book certain time slots?**  
+    Yes, it must be under my control.
+
+20. **Would a daily dashboard be useful?**  
+    Yes, showing sessions, notes, and important info.
+
+21. **Would you like to view a patient’s history instantly?**  
+    Yes, it’s one of the most important features.
+
+22. **Do you need a keyword search in your notes?**  
+    Extremely useful, it would save time.
+
+23. **How do you handle invoices?**  
+    Manually, using an external billing system.
+
+24. **Would you like the platform to integrate with billing tools?**  
+    Yes, that would be a big help.
+
+25. **Do you need to record session outcomes (present/absent)?**  
+    Yes, for organization and billing.
+
+26. **Do you need to distinguish between online and in-person sessions?**  
+    Yes, that distinction is essential.
+
+27. **Would customization of the interface be helpful?**  
+    Yes: colors, layout, and personal preferences.
+
+28. **Would you like an automatically organized patient archive?**  
+    Definitely yes.
+
+29. **Do you need monthly statistics (hours worked, number of sessions)?**  
+    Yes, for workload analysis.
+
+30. **What is the single most important feature you would want immediately?**  
+    An integrated calendar with videocalls and clinical notes in one place.
+
+---
+
+## 2. User Requirements Derived
+
+### **Functional Requirements**
+- Advanced appointment management system.  
+- Fully synchronized calendar.  
+- Automatic reminders for patients.  
+- Secure internal chat.  
+- Integrated videocall system with timer.  
+- Clinical notes module (free text + structured).  
+- Advanced search for notes and documents.  
+- Daily dashboard for the psychologist.  
+- Patient archive with complete history.  
+- Ability to send documents to patients.  
+- Patients can autonomously book sessions.
+
+### **Non-Functional Requirements**
+- End-to-end encryption for chat and notes.  
+- Modern and customizable interface.  
+- High videocall stability.  
+- Fast and user-friendly system.  
+- Secure storage for clinical data.
+
+### **Organizational Requirements**
+- Record patient attendance (present/absent).  
+- Monthly statistics and analytics.  
+- Distinction between online and in-person sessions.  
+- Optional integration with billing systems.

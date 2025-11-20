@@ -15,7 +15,7 @@ Valutare fattibilità tecnica, economica, organizzativa e di mercato della reali
 **FATTIBILE CON CONDIZIONI** – Il progetto è realizzabile, ma richiede competenze avanzate in sicurezza, gestione dati sanitari e infrastrutture affidabili.
 
 ### **Investimento stimato**  
-€ 8.000 – € 20.000
+€ 20.000 – € 30.000
 
 ### **ROI atteso**  
 30–60% entro 2–3 anni.
