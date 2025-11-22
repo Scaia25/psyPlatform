@@ -1,5 +1,7 @@
 # 🌿 PSYPLATFORM
 
+ v0.3.0 22-11-2025
+
 ## *A modern platform connecting psychologists and patients safely and intuitively.*
 
 # 🚀 OVERVIEW
@@ -10,6 +12,15 @@ progress tracking, and secure communication. The platform prioritizes
 privacy, security, and usability, ensuring a smooth experience for both
 professionals and patients. It is available in two languages: Italian
 and English.
+
+# ⚙️ GETTING STARTED
+
+``` bash
+git clone https://github.com/your-user/psyplatform.git
+cd psyplatform/src/frontend/en #for english version
+cd psyplatform/src/frontend/it #for italian version
+open index.html
+```
 
 # ✨ KEY FEATURES
 
@@ -64,11 +75,10 @@ Compatible with modern browsers supporting CSS3 animations and flexbox.
 those seeking support.*
 
 
-# ⚙️ GETTING STARTED
-
-``` bash
-git clone https://github.com/your-user/psyplatform.git
-cd psyplatform/src/frontend/en #for english version
-cd psyplatform/src/frontend/it #for italian version
-open index.html
-```
+# EXAM
+| Prodotto | Quantità | Prezzo Unitario |
+| :--- | :---: | ---: |
+| Caffè in grani ☕ | 2 | 12.50 € |
+| Tè verde 🍵 | 5 | 5.99 € |
+| Cioccolato fondente 🍫 | 1 | 8.75 € |
+| Totale Articoli | 8 | 27.24 € |
