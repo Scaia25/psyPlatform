@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PsyPlatform - registrati</title>
-    <link rel="icon" href="../images/logo.png">
-    <link rel="stylesheet" href="registrati.css">
+    <link rel="icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../css/registrati.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -40,27 +40,27 @@
         <h1>REGISTRATI A PSYPLATFORM</h1>
         <p>Hai già un account? <u><a href="accedi.html">accedi ora</a></u></p>
 
-        <form action="" method="">
+        <form action="../../php/registrati.php" method="post">
             <div class="form-fields">
-                <div class="user-type">
-                    <label for="user-type"><strong>Seleziona la tua tipologia</strong></label>
+                <div class="tipologia-utente">
+                    <label for="tipologia-utente"><strong>Seleziona la tua tipologia</strong></label>
 
                     <label class="custom-radio">
-                        <input type="radio" name="user-type" value="patient" checked> Paziente
+                        <input type="radio" name="tipologia-utente" value="paziente" checked> Paziente
                         <span class="radio-checkmark"></span>
                     </label>
 
                     <label class="custom-radio">
-                        <input type="radio" name="user-type" value="psychologist"> Psicologo
+                        <input type="radio" name="tipologia-utente" value="psicologo"> Psicologo
                         <span class="radio-checkmark"></span>
                     </label>
                 </div>
 
-                <label for="name"><strong>Nome</strong></label>
-                <input type="text" name="name" placeholder="Inserire il proprio nome" required>
+                <label for="nome"><strong>Nome</strong></label>
+                <input type="text" name="nome" placeholder="Inserire il proprio nome" required>
 
-                <label for="surname"><strong>Cognome</strong></label>
-                <input type="text" name="surname" placeholder="Inserire il proprio cognome" required>
+                <label for="cognome"><strong>Cognome</strong></label>
+                <input type="text" name="cognome" placeholder="Inserire il proprio cognome" required>
 
                 <label for="email"><strong>Email</strong></label>
                 <input type="text" name="email" placeholder="Inserire la propria email" required>
@@ -69,7 +69,7 @@
                 <input type="password" name="password" placeholder="Inserire la propria password" required>
             </div>
 
-            <button type="submit">Accedi</button>
+            <button type="submit">Registrati</button>
         </form>
     </div>
 </body>
