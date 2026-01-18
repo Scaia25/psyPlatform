@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PsyPlatform - accedi</title>
-    <link rel="icon" href="../images/logo.png">
-    <link rel="stylesheet" href="accedi.css">
+    <title>PsyPlatform - contatti</title>
+    <link rel="icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../css/contatti.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -37,19 +37,24 @@
     </header>
 
     <div class="hero">
-        <h1>ACCEDI A PSYPLATFORM</h1>
-        <p>Non hai un account? <u><a href="registrati.html">registrati ora</a></u></p>
+        <h1>PARLA CON IL NOSTRO TEAM</h1>
+        <p>Rispondiamo in meno di 24 ore lavorative</p>
 
         <form action="" method="">
             <div class="form-fields">
+                <label for="name-surname"><strong>Nome e Cognome</strong></label>
+                <input type="text" name="name-surname" placeholder="Inserire il proprio nome e cognome" required>
+
                 <label for="email"><strong>Email</strong></label>
                 <input type="text" name="email" placeholder="Inserire la propria email" required>
 
-                <label for="password"><strong>Password</strong></label>
-                <input type="password" name="password" placeholder="Inserire la propria password" required>
+                <label for="problem-description"><strong>Descrivi il tuo problema</strong></label>
+                <textarea name="problem-description" rows="6"
+                    placeholder="Descrivi il tuo problema o richiesta in dettaglio..." required></textarea>
+
             </div>
 
-            <button type="submit">Accedi</button>
+            <button type="submit">Invia richiesta</button>
         </form>
     </div>
 </body>

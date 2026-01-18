@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PsyPlatform - contact</title>
-    <link rel="icon" href="../images/logo.png">
-    <link rel="stylesheet" href="contatti.css">
+    <title>PsyPlatform - sign up</title>
+    <link rel="icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../css/registrati.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -37,24 +37,39 @@
     </header>
 
     <div class="hero">
-        <h1>TALK TO OUR TEAM</h1>
-        <p>We respond in less than 24 business hours</p>
+        <h1>SIGN UP FOR PSYPLATFORM</h1>
+        <p>Already have an account? <u><a href="login.html">login now</a></u></p>
 
         <form action="" method="">
             <div class="form-fields">
-                <label for="name-surname"><strong>First and Last Name</strong></label>
-                <input type="text" name="name-surname" placeholder="Enter your first and last name" required>
+                <div class="tipologia-utente">
+                    <label for="tipologia-utente"><strong>Select your user type</strong></label>
+
+                    <label class="custom-radio">
+                        <input type="radio" name="tipologia-utente" value="patient" checked> Patient
+                        <span class="radio-checkmark"></span>
+                    </label>
+
+                    <label class="custom-radio">
+                        <input type="radio" name="tipologia-utente" value="psychologist"> Psychologist
+                        <span class="radio-checkmark"></span>
+                    </label>
+                </div>
+
+                <label for="name"><strong>First Name</strong></label>
+                <input type="text" name="name" placeholder="Enter your first name" required>
+
+                <label for="surname"><strong>Last Name</strong></label>
+                <input type="text" name="surname" placeholder="Enter your last name" required>
 
                 <label for="email"><strong>Email</strong></label>
                 <input type="text" name="email" placeholder="Enter your email" required>
 
-                <label for="problem-description"><strong>Describe your problem</strong></label>
-                <textarea name="problem-description" rows="6"
-                    placeholder="Describe your problem or request in detail..." required></textarea>
-
+                <label for="password"><strong>Password</strong></label>
+                <input type="password" name="password" placeholder="Enter your password" required>
             </div>
 
-            <button type="submit">Send request</button>
+            <button type="submit">Sign Up</button>
         </form>
     </div>
 </body>
