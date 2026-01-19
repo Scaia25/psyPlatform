@@ -1,12 +1,17 @@
+<?php
+require "../../php/auth.php";
+richiedeRuolo("psicologo");
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PsyPlatform - registrati</title>
+    <title>PsyPlatform</title>
     <link rel="icon" href="../../images/logo.png">
-    <link rel="stylesheet" href="../../css/registrati.css">
+    <link rel="stylesheet" href="../../css/homePsicologo.css  ">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -22,24 +27,25 @@
 
         <div class="menu">
             <div class="sections-menu">
-                <a href="../../../../index.html">Home</a>
-                <a href="psicologi.html">Per psicologi</a>
-                <a href="pazienti.html">Per pazienti</a>
-                <a href="prezzi.html">Prezzi</a>
-                <a href="contatti.html">Contatti</a>
+                <a href="homePsicologo.php">Home</a>
+                <a href="agenda.php">Visualizza agenda</a>
+                <a href="contatti.html">Assistenza</a>
             </div>
 
+
             <div class="menu-buttons">
-                <a href="accedi.html"><button>Accedi</button></a>
-                <a href="registrati.html"><button>Registrati</button></a>
+                <a href="registraPaziente.php"><button>Registra paziente</button></a>
             </div>
         </div>
     </header>
 
     <div class="hero">
-        <h1>REGISTRAZIONE A PSYPLATFORM AVVENUTA!</h1>
-        <p><u><a href="accedi.html">ACCEDI</a></u> al tuo account</p>
+
     </div>
+
+    <script>
+
+    </script>
 </body>
 
 </html>

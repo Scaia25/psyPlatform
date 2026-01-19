@@ -1,3 +1,8 @@
+<?php
+require "../../php/auth.php";
+richiedeRuolo("psicologo");
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -6,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PsyPlatform</title>
     <link rel="icon" href="../../images/logo.png">
-    <link rel="stylesheet" href="../../css/homePsicologo.css  ">
+    <link rel="stylesheet" href="../../css/registraPaziente.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -22,25 +27,34 @@
 
         <div class="menu">
             <div class="sections-menu">
-                <a href="homePsicologo.html">Home</a>
-                <a href="agenda.html">Visualizza agenda</a>
+                <a href="homePsicologo.php">Home</a>
+                <a href="agenda.php">Visualizza agenda</a>
                 <a href="contatti.html">Assistenza</a>
             </div>
 
 
             <div class="menu-buttons">
-                <a href="registraPaziente.html"><button>Registra paziente</button></a>
+                <a href="registraPaziente.php"><button>Registra paziente</button></a>
             </div>
         </div>
     </header>
 
     <div class="hero">
+        <h1>REGISTRAZIONE PAZIENTE</h1>
 
+        <form action="" method="" onsubmit="verifica(event)">
+            <div class="form-fields">
+                <label for="IDPaziente"><strong>ID paziente</strong></label>
+                <input type="text" id="IDPaziente" name="IDPaziente" placeholder="Inserire l'ID del paziente" required>
+            </div>
+
+            <div id="alert"></div>
+
+            <button type="submit">Registra</button>
+        </form>
     </div>
 
-    <script>
-        
-    </script>
+    <script src="../../js/registraPaziente.js"></script>
 </body>
 
 </html>

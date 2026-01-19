@@ -1,28 +1,42 @@
 <?php
-// Connessione al database
-$conn = new mysqli("localhost", "root", "", "psyplatform");
+session_start();
 
-// Controllo connessione
+$conn = new mysqli("localhost", "root", "", "psyplatform");
 if ($conn->connect_error) {
     die("Errore di connessione");
 }
 
-// Prendo i dati dal form
 $email = $_POST["email"];
 $password = $_POST["password"];
 
-// Query di selezione
+/* 🔍 Controllo pazienti */
+$sqlP = "SELECT * FROM pazienti 
+         WHERE email = '$email' 
+         AND password = '$password'";
+$resP = $conn->query($sqlP);
 
+if ($resP->num_rows == 1) {
+    $_SESSION["username"] = $username;
+    $_SESSION["ruolo"] = "paziente";
 
-// Esecuzione query
-if ($conn->query($sql) === TRUE) {
-    $conn->close();
-    header("Location: ../html/it/registrazioneAvvenuta.html");
-    exit;
-} else {
-    $conn->close();
-    echo "<script>
-            alert('Errore nella registrazione');
-          </script>";
+    header("Location: ../html/it/homePaziente.php");
     exit;
 }
+
+/* 🔍 Controllo psicologi */
+$sqlS = "SELECT * FROM psicologi 
+         WHERE email = '$email' 
+         AND password = '$password'";
+$resS = $conn->query($sqlS);
+
+if ($resS->num_rows == 1) {
+    $_SESSION["email"] = $email;
+    $_SESSION["ruolo"] = "psicologo";
+
+    header("Location: ../html/it/homePsicologo.php");
+    exit;
+}
+
+/* ❌ Nessun match */
+echo "Credenziali errate";
+?>
