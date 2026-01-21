@@ -66,12 +66,12 @@ header a {
 }
 
 
-/* hero */
-.hero {
+/* upper-herp */
+.upper-hero {
     display: flex;
-    margin-top: -80px;
-    align-items: center;
-    justify-content: center;
+    margin-top: -70px;
+    padding-left: 20px;
+    justify-content: left;
     min-height: 100vh;
     gap: 20px;
 }
@@ -88,7 +88,7 @@ header a {
 .hero-text h1 {
     font-weight: 800;
     margin: 0;
-    font-size: 45px;
+    font-size: 35px;
 }
 
 .hero-text p {
@@ -97,10 +97,6 @@ header a {
     margin: 0;
 }
 
-.hero img {
-    width: 500px;
-    border-radius: 10px;
-}
 
 
 

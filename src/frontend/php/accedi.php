@@ -16,7 +16,13 @@ $sqlP = "SELECT * FROM pazienti
 $resP = $conn->query($sqlP);
 
 if ($resP->num_rows == 1) {
-    $_SESSION["username"] = $username;
+    $utente = $resP->fetch_assoc(); // prende la riga dal DB
+
+    $_SESSION["ID_paziente"] = $utente["ID_paziente"];
+    $_SESSION["nome"] = $utente["nome"];
+    $_SESSION["cognome"] = $utente["cognome"];
+    $_SESSION["email"] = $utente["email"];
+    $_SESSION["id_psicologo"] = $utente["id_psicologo"];
     $_SESSION["ruolo"] = "paziente";
 
     header("Location: ../html/it/homePaziente.php");
@@ -30,7 +36,12 @@ $sqlS = "SELECT * FROM psicologi
 $resS = $conn->query($sqlS);
 
 if ($resS->num_rows == 1) {
-    $_SESSION["email"] = $email;
+    $utente = $resS->fetch_assoc(); // prende la riga dal DB
+
+    $_SESSION["ID"] = $utente["ID_psicologo"];
+    $_SESSION["nome"] = $utente["nome"];
+    $_SESSION["cognome"] = $utente["cognome"];
+    $_SESSION["email"] = $utente["email"];
     $_SESSION["ruolo"] = "psicologo";
 
     header("Location: ../html/it/homePsicologo.php");

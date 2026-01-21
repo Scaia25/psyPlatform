@@ -1,9 +1,12 @@
 <?php
 require "../../php/auth.php";
-richiedeRuolo("psicologo");
+richiedeRuolo("paziente");
 
 $nome = $_SESSION["nome"] ?? "nome";
 $cognome = $_SESSION["cognome"] ?? "cognome";
+$ID_paziente = $_SESSION["ID_paziente"] ?? "ID";
+$id_psicologo = $_SESSION["id_psicologo"] ?? "ID";
+
 ?>
 
 <!DOCTYPE html>
@@ -30,27 +33,39 @@ $cognome = $_SESSION["cognome"] ?? "cognome";
 
         <div class="menu">
             <div class="sections-menu">
-                <a href="homePsicologo.php">Home</a>
+                <a href="homePaziente.php">Home</a>
                 <a href="agenda.php">Visualizza agenda</a>
                 <a href="contatti.html">Assistenza</a>
             </div>
 
 
-            <div class="menu-buttons">
+            <!--<div class="menu-buttons">
                 <a href="registraPaziente.php"><button>Registra paziente</button></a>
-            </div>
+            </div> -->
         </div>
     </header>
 
     <div class="upper-hero">
         <div class="hero-text">
             <h1>Bentornatə <?php echo $nome . " " . $cognome; ?>,</h1>
-            <p>Visualizza e monitora i tuoi pazienti:</strong></p>
+            <div id="stampa">
+
+            </div>
         </div>
     </div>
 
     <script>
+        function pazienteRegistrato() {
+            const id_psicologo = <?php echo json_encode($id_psicologo); ?>;
 
+            if (isNaN(id_psicologo)) {
+                console.log("senza ID");
+            } else {
+                console.log("id:" + id_psicologo);
+            }
+        }
+
+        pazienteRegistrato();
     </script>
 </body>
 
