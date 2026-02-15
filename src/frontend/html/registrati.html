@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PsyPlatform - registrati</title>
+    <link rel="icon" href="../images/logo.png">
+    <link rel="stylesheet" href="../css/registrati.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,800;1,800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,500;1,500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <label>PsyPlatform</label>
+
+        <div class="menu">
+            <div class="sections-menu">
+                <a href="../../../index.html">Home</a>
+                <a href="psicologi.html">Per psicologi</a>
+                <a href="pazienti.html">Per pazienti</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="contatti.html">Contatti</a>
+            </div>
+
+            <div class="menu-buttons">
+                <a href="accedi.html"><button>Accedi</button></a>
+                <a href="registrati.html"><button>Registrati</button></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>REGISTRATI A PSYPLATFORM</h1>
+        <p>Hai già un account? <u><a href="accedi.html">accedi ora</a></u></p>
+
+        <form action="">
+            <div class="form-fields">
+                <div class="tipologia-utente">
+                    <label for="tipologia-utente"><strong>Seleziona la tua tipologia</strong></label>
+
+                    <label class="custom-radio">
+                        <input type="radio" name="tipologia-utente" value="paziente" checked> Paziente
+                        <span class="radio-checkmark"></span>
+                    </label>
+
+                    <label class="custom-radio">
+                        <input type="radio" name="tipologia-utente" value="psicologo"> Psicologo
+                        <span class="radio-checkmark"></span>
+                    </label>
+                </div>
+
+                <label for="nome"><strong>Nome</strong></label>
+                <input type="text" name="nome" placeholder="Inserire il proprio nome" required>
+
+                <label for="cognome"><strong>Cognome</strong></label>
+                <input type="text" name="cognome" placeholder="Inserire il proprio cognome" required>
+
+                <label for="email"><strong>Email</strong></label>
+                <input type="text" name="email" placeholder="Inserire la propria email" required>
+
+                <label for="provincia"><strong>Provincia</strong></label>
+                <input type="text" list="listaProvince" id="provincia" name="provincia" placeholder="Scrivi o scegli una provincia" required>
+                <datalist id="listaProvince">
+                    <option value="AG - Agrigento">
+                    <option value="AL - Alessandria">
+                    <option value="AN - Ancona">
+                    <option value="AO - Aosta">
+                    <option value="AR - Arezzo">
+                    <option value="AP - Ascoli Piceno">
+                    <option value="AT - Asti">
+                    <option value="AV - Avellino">
+                    <option value="BA - Bari">
+                    <option value="BT - Barletta-Andria-Trani">
+                    <option value="BL - Belluno">
+                    <option value="BN - Benevento">
+                    <option value="BG - Bergamo">
+                    <option value="BI - Biella">
+                    <option value="BO - Bologna">
+                    <option value="BZ - Bolzano">
+                    <option value="BS - Brescia">
+                    <option value="BR - Brindisi">
+                    <option value="CA - Cagliari">
+                    <option value="CL - Caltanissetta">
+                    <option value="CB - Campobasso">
+                    <option value="CE - Caserta">
+                    <option value="CT - Catania">
+                    <option value="CZ - Catanzaro">
+                    <option value="CH - Chieti">
+                    <option value="CO - Como">
+                    <option value="CS - Cosenza">
+                    <option value="CR - Cremona">
+                    <option value="KR - Crotone">
+                    <option value="CN - Cuneo">
+                    <option value="EN - Enna">
+                    <option value="FM - Fermo">
+                    <option value="FE - Ferrara">
+                    <option value="FI - Firenze">
+                    <option value="FG - Foggia">
+                    <option value="FC - Forlì-Cesena">
+                    <option value="FR - Frosinone">
+                    <option value="GE - Genova">
+                    <option value="GO - Gorizia">
+                    <option value="GR - Grosseto">
+                    <option value="IM - Imperia">
+                    <option value="IS - Isernia">
+                    <option value="SP - La Spezia">
+                    <option value="AQ - L'Aquila">
+                    <option value="LT - Latina">
+                    <option value="LE - Lecce">
+                    <option value="LC - Lecco">
+                    <option value="LI - Livorno">
+                    <option value="LO - Lodi">
+                    <option value="LU - Lucca">
+                    <option value="MC - Macerata">
+                    <option value="MN - Mantova">
+                    <option value="MS - Massa-Carrara">
+                    <option value="MT - Matera">
+                    <option value="ME - Messina">
+                    <option value="MI - Milano">
+                    <option value="MO - Modena">
+                    <option value="MB - Monza e Brianza">
+                    <option value="NA - Napoli">
+                    <option value="NO - Novara">
+                    <option value="NU - Nuoro">
+                    <option value="OR - Oristano">
+                    <option value="PD - Padova">
+                    <option value="PA - Palermo">
+                    <option value="PR - Parma">
+                    <option value="PV - Pavia">
+                    <option value="PG - Perugia">
+                    <option value="PU - Pesaro e Urbino">
+                    <option value="PE - Pescara">
+                    <option value="PC - Piacenza">
+                    <option value="PI - Pisa">
+                    <option value="PT - Pistoia">
+                    <option value="PN - Pordenone">
+                    <option value="PZ - Potenza">
+                    <option value="PO - Prato">
+                    <option value="RG - Ragusa">
+                    <option value="RA - Ravenna">
+                    <option value="RC - Reggio Calabria">
+                    <option value="RE - Reggio Emilia">
+                    <option value="RI - Rieti">
+                    <option value="RN - Rimini">
+                    <option value="RM - Roma">
+                    <option value="RO - Rovigo">
+                    <option value="SA - Salerno">
+                    <option value="SS - Sassari">
+                    <option value="SV - Savona">
+                    <option value="SI - Siena">
+                    <option value="SR - Siracusa">
+                    <option value="SO - Sondrio">
+                    <option value="TA - Taranto">
+                    <option value="TE - Teramo">
+                    <option value="TR - Terni">
+                    <option value="TO - Torino">
+                    <option value="TP - Trapani">
+                    <option value="TN - Trento">
+                    <option value="TV - Treviso">
+                    <option value="TS - Trieste">
+                    <option value="UD - Udine">
+                    <option value="VA - Varese">
+                    <option value="VE - Venezia">
+                    <option value="VB - Verbano-Cusio-Ossola">
+                    <option value="VC - Vercelli">
+                    <option value="VR - Verona">
+                    <option value="VV - Vibo Valentia">
+                    <option value="VI - Vicenza">
+                    <option value="VT - Viterbo">
+                </datalist>
+
+                <label for="password"><strong>Password</strong></label>
+                <input type="password" name="password" placeholder="Inserire la propria password" required>
+            </div>
+
+            <button type="submit">Registrati</button>
+        </form>
+    </div>
+</body>
+
+</html>

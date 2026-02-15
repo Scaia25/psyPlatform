@@ -1,0 +1,227 @@
+/* body */
+body {
+    color: #ffffff;
+    background-color: #202024;
+    font-family: "Host Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin: 0;
+    font-size: 1rem; /* Base 16px */
+}
+
+/* header */
+header {
+    padding: 1.875rem 1.875rem 0 1.875rem; /* 30px 30px 0 30px */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header label {
+    font-size: 1.25rem; /* 20px */
+}
+
+header a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.menu {
+    align-items: center;
+    gap: 4.6875rem; /* 75px */
+    display: flex;
+}
+
+.menu-buttons {
+    display: flex;
+    gap: 1.25rem; /* 20px */
+}
+
+.menu-buttons button {
+    border-radius: 1.125rem; /* 18px */
+    background-color: #ffffff;
+    color: #202024;
+    width: 8rem; /* 128px */
+    height: 2.375rem; /* 38px */
+    border: 3px solid #ffffff; /* Mantenuto px per nitidezza */
+    transition: all ease 0.5s;
+    font-size: 1rem; /* 16px */
+    font-family: "Host Grotesk", sans-serif;
+}
+
+.menu-buttons #logoutBtn {
+    background-color: #ff6666;
+    color: #202024;
+    width: 8rem;
+    height: 2.375rem;
+    border: 3px solid #ff6666;
+    transition: all ease 0.5s;
+}
+
+.menu-buttons button:hover {
+    background-color: #202024;
+    color: #ffffff;
+    border: 3px solid #ffffff;
+}
+
+.menu-buttons #logoutBtn:hover {
+    background-color: #202024;
+    color:  #ff6666;
+    border: 3px solid #ff6666;
+}
+
+.sections-menu {
+    display: flex;
+    gap: 1.25rem; /* 20px */
+    align-items: center;
+}
+
+.sections-menu #user {  
+    align-items: center;
+    font-size: 0.9rem;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+}
+
+.sections-menu .v-divider {
+  border-left: 0.15rem solid #e0e0e0;
+  height: 1.5rem;
+  margin: 0 0.9375rem; /* 15px */
+}
+
+/* hero */
+.hero {
+    margin: 3rem 4rem 1.25rem 4rem; /* 20px -> 1.25rem */
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.hero-welcome {
+    margin-bottom: 1rem;
+}
+
+.hero-welcome h1{
+    margin-bottom: 0.2rem;
+}
+
+.hero-welcome p{
+    margin-top: 0;
+}
+
+.hero-widgets {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem; /* Mantenuto % come richiesto */
+}
+
+.widget {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 2rem;
+    border: solid 1px #ffffff; /* Ottimizzato a 1px */
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3); /* Shadow in px */
+}
+
+.widget-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.widget-column .widget {
+    width: 100%;
+}
+
+.widget h2{
+    margin: 0;
+}
+
+.widget hr{
+    margin-left: 0;
+    width: 75%;
+    margin-bottom: 1rem;
+}
+
+.widget-button  {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.widget-button button {
+    border-radius: 1.125rem; /* 18px */
+    background-color: #ffffff;
+    color: #202024;
+    width: 15rem;
+    height: 2.375rem; /* 38px */
+    border: 3px solid #ffffff;
+    transition: all ease 0.5s;
+    font-size: 1rem; /* 16px */
+    font-family: "Host Grotesk", sans-serif;
+    background-image: linear-gradient(to right, #202024 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+}
+
+.widget-button button:hover {
+    background-position: left bottom;
+    color: #ffffff;
+    border: 3px solid #ffffff;
+}
+
+/* --- CARD INTERNE --- */
+.evento, .paziente, .prenotazione {
+    display: flex;
+    align-items: center;
+    background: #2a2a2e;
+    border-radius: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    margin: 0.6rem 0;
+}
+
+.info-evento {
+    flex: 0 0 11rem; 
+}
+.info-evento:last-child {
+    flex: 0 0 5rem;
+}
+
+.infoPrenotazione {
+    flex: 0 0 11rem; 
+}
+.infoPrenotazione:nth-child(3), 
+.infoPrenotazione:nth-child(4) {
+    flex: 0 0 6rem;
+    background: #36363b;
+    padding: 0.4rem;
+    border-radius: 0.4rem;
+    text-align: center;
+    margin-right: 0.5rem;
+}
+
+.infoPaziente {
+    flex: 0 0 12rem;
+}
+
+.info-evento p:first-child, 
+.infoPrenotazione p:first-child, 
+.infoPaziente p:first-child {
+    font-size: 0.65rem;
+    color: #a0a0a0;
+    margin: 0 0 0.2rem 0;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.info-evento p:last-child, 
+.infoPrenotazione p:last-child, 
+.infoPaziente p:last-child {
+    font-size: 0.9rem;
+    color: #ffffff;
+    margin: 0;
+    font-weight: 500;
+}

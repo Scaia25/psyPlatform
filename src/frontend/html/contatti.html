@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PsyPlatform - registrati</title>
-    <link rel="icon" href="../../images/logo.png">
-    <link rel="stylesheet" href="../../css/registrati.css">
+    <title>PsyPlatform - contatti</title>
+    <link rel="icon" href="../images/logo.png">
+    <link rel="stylesheet" href="../css/contatti.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -22,7 +22,7 @@
 
         <div class="menu">
             <div class="sections-menu">
-                <a href="index.html">Home</a>
+                <a href="../../../index.html">Home</a>
                 <a href="psicologi.html">Per psicologi</a>
                 <a href="pazienti.html">Per pazienti</a>
                 <a href="prezzi.html">Prezzi</a>
@@ -37,8 +37,25 @@
     </header>
 
     <div class="hero">
-        <h1>REGISTRAZIONE A PSYPLATFORM AVVENUTA!</h1>
-        <p><u><a href="accedi.html">ACCEDI</a></u> al tuo account</p>
+        <h1>PARLA CON IL NOSTRO TEAM</h1>
+        <p>Rispondiamo in meno di 24 ore lavorative</p>
+
+        <form action="" method="">
+            <div class="form-fields">
+                <label for="name-surname"><strong>Nome e Cognome</strong></label>
+                <input type="text" name="name-surname" placeholder="Inserire il proprio nome e cognome" required>
+
+                <label for="email"><strong>Email</strong></label>
+                <input type="text" name="email" placeholder="Inserire la propria email" required>
+
+                <label for="problem-description"><strong>Descrivi il tuo problema</strong></label>
+                <textarea name="problem-description" rows="6"
+                    placeholder="Descrivi il tuo problema o richiesta in dettaglio..." required></textarea>
+
+            </div>
+
+            <button type="submit">Invia richiesta</button>
+        </form>
     </div>
 </body>
 
