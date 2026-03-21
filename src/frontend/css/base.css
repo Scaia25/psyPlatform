@@ -1,0 +1,180 @@
+/* ===========================
+   VARIABLES & RESET
+=========================== */
+:root {
+    --bg:           #18181b;
+    --bg-card:      #1f1f23;
+    --bg-inner:     #27272c;
+    --bg-pill:      #313137;
+    --border:       rgba(255,255,255,0.10);
+    --border-hover: rgba(255,255,255,0.25);
+    --text:         #f0f0f2;
+    --text-muted:   #7a7a8c;
+    --accent:       #5b9cf6;
+    --accent-2:     #a78bfa;
+    --accent-3:     #34d399;
+    --accent-4:     #fb923c;
+    --glow:         rgba(91,156,246,0.15);
+    --radius-lg:    1rem;
+    --radius-md:    0.6rem;
+    --radius-sm:    0.4rem;
+    --transition:   0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    color: var(--text);
+    background-color: var(--bg);
+    background-image:
+        radial-gradient(ellipse 60% 40% at 20% 0%,   rgba(91,156,246,0.06)  0%, transparent 70%),
+        radial-gradient(ellipse 50% 35% at 80% 100%, rgba(167,139,250,0.05) 0%, transparent 70%);
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 1rem;
+    min-height: 100vh;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+header {
+    padding: 1.4rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(24,24,27,0.88);
+    backdrop-filter: blur(12px);
+}
+
+.header-logo {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.sections-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+}
+
+.sections-menu #user {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding: 0 0.5rem;
+}
+
+.sections-menu .v-divider {
+    border-left: 1px solid rgba(255,255,255,0.12);
+    height: 1.2rem;
+    margin: 0 0.75rem;
+}
+
+.sections-menu a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition), background var(--transition);
+}
+
+.sections-menu a:hover {
+    color: var(--text);
+    background: rgba(255,255,255,0.06);
+}
+
+.menu-buttons {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.menu-buttons a { text-decoration: none; }
+
+.menu-buttons button {
+    border-radius: 2rem;
+    background: transparent;
+    color: var(--text);
+    padding: 0 1.2rem;
+    height: 2rem;
+    border: 1px solid var(--border-hover);
+    font-size: 0.83rem;
+    font-family: "Host Grotesk", sans-serif;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.menu-buttons button:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.4);
+}
+
+.menu-buttons #logoutBtn {
+    color: #ff6b6b;
+    border-color: rgba(255,107,107,0.3);
+}
+
+.menu-buttons #logoutBtn:hover {
+    background: rgba(255,107,107,0.08);
+    border-color: #ff6b6b;
+}
+
+/* ===========================
+   HERO COMMON
+=========================== */
+.hero {
+    padding: 3rem 2.5rem 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeUp 0.4s ease both;
+}
+
+.hero h1 {
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+}
+
+.hero > p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin-bottom: 2rem;
+}
+
+.hero > p a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity var(--transition);
+}
+
+.hero > p a:hover { opacity: 0.8; }
+
+/* ===========================
+   DIVIDER
+=========================== */
+.page-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 1.5rem 0 2rem;
+}
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

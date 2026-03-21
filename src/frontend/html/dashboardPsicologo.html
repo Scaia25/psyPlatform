@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PsyPlatform - dashboard</title>
+    <link rel="icon" href="../images/logo.png">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ===================== HEADER ===================== -->
+    <header>
+        <span class="header-logo">PsyPlatform</span>
+
+        <div class="menu">
+            <div class="sections-menu">
+                <span id="user">Mario Rossi</span>
+                <div class="v-divider"></div>
+                <a href="../../../index.html">Home</a>
+                <a href="dashboard.php">Dashboard</a>
+                <a href="agenda.php">Agenda</a>
+                <a href="pazienti.html">Pazienti</a>
+                <a href="fatturazione.php">Fatturazione</a>
+                <a href="contatti.php">Assistenza</a>
+            </div>
+
+            <div class="menu-buttons">
+                <a href="profilo.html"><button>Il mio profilo</button></a>
+                <a href="../../backend/logout.php"><button id="logoutBtn">Disconnettiti</button></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===================== HERO ===================== -->
+    <div class="hero">
+
+        <div class="hero-welcome">
+            <h1>Buongiorno, <em>Mario</em></h1>
+            <p>Per la giornata odierna hai 3 eventi in agenda</p>
+        </div>
+
+        <!-- ===== 3-COLUMN GRID ===== -->
+        <div class="hero-widgets">
+
+            <!-- ── COLONNA 1: Events ── -->
+            <div class="widget" id="eventi-giornalieri">
+                <div>
+                    <div class="widget-header">
+                        <span class="widget-accent-dot"></span>
+                        <h2>Eventi della giornata</h2>
+                    </div>
+                    <div class="widget-divider"></div>
+
+                    <div class="evento">
+                        <div class="info-nominativo">
+                            <p class="card-label">nominativo</p>
+                            <p class="card-value">Luigi Bianchi</p>
+                        </div>
+                        <div class="info-email">
+                            <p class="card-label">email</p>
+                            <p class="card-value">l.bianchi@email.com</p>
+                        </div>
+                        <div class="info-orario">
+                            <p class="card-label">orario</p>
+                            <p class="card-value">12:30</p>
+                        </div>
+                    </div>
+
+                    <div class="evento">
+                        <div class="info-nominativo">
+                            <p class="card-label">nominativo</p>
+                            <p class="card-value">Anna Ferrari</p>
+                        </div>
+                        <div class="info-email">
+                            <p class="card-label">email</p>
+                            <p class="card-value">a.ferrari@email.com</p>
+                        </div>
+                        <div class="info-orario">
+                            <p class="card-label">orario</p>
+                            <p class="card-value">14:00</p>
+                        </div>
+                    </div>
+
+                    <div class="evento">
+                        <div class="info-nominativo">
+                            <p class="card-label">nominativo</p>
+                            <p class="card-value">Carla Russo</p>
+                        </div>
+                        <div class="info-email">
+                            <p class="card-label">email</p>
+                            <p class="card-value">c.russo@email.com</p>
+                        </div>
+                        <div class="info-orario">
+                            <p class="card-label">orario</p>
+                            <p class="card-value">16:30</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget-button">
+                    <a href="agenda.php"><button>Visualizza l'agenda completa</button></a>
+                </div>
+            </div>
+
+            <!-- ── COLONNA 2: Prenotazioni ── -->
+            <div class="widget" id="prenotazioni">
+                <div>
+                    <div class="widget-header">
+                        <span class="widget-accent-dot"></span>
+                        <h2>Prenotazioni in attesa</h2>
+                    </div>
+                    <div class="widget-divider"></div>
+
+                    <div class="prenotazione">
+                        <div class="info-prenotazione-nominativo">
+                            <p class="card-label">nominativo</p>
+                            <p class="card-value">Luigi Bianchi</p>
+                        </div>
+                        <div class="info-prenotazione-email">
+                            <p class="card-label">email</p>
+                            <p class="card-value">l.bianchi@email.com</p>
+                        </div>
+                        <div class="info-prenotazione-data">
+                            <p class="card-label">data</p>
+                            <p class="card-value">12/07</p>
+                        </div>
+                    </div>
+
+                    <div class="prenotazione">
+                        <div class="info-prenotazione-nominativo">
+                            <p class="card-label">nominativo</p>
+                            <p class="card-value">Anna Ferrari</p>
+                        </div>
+                        <div class="info-prenotazione-email">
+                            <p class="card-label">email</p>
+                            <p class="card-value">a.ferrari@email.com</p>
+                        </div>
+                        <div class="info-prenotazione-data">
+                            <p class="card-label">data</p>
+                            <p class="card-value">15/07</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget-button">
+                    <a href="sessioni.html"><button>Visualizza tutte le sessioni</button></a>
+                </div>
+            </div>
+
+            <!-- ── COLONNA 3: Professionisti + Quota ── -->
+            <div class="widget-column-right">
+
+                <div class="widget" id="professionisti">
+                    <div>
+                        <div class="widget-header">
+                            <span class="widget-accent-dot"></span>
+                            <h2>Pazienti da ricontattare</h2>
+                        </div>
+                        <div class="widget-divider"></div>
+
+                        <div class="persona">
+                            <div class="info-persona-nominativo">
+                                <p class="card-label">nominativo</p>
+                                <p class="card-value">Luigi Bianchi</p>
+                            </div>
+                            <div class="info-persona-email">
+                                <p class="card-label">email</p>
+                                <p class="card-value">l.bianchi@email.com</p>
+                            </div>
+                            <div class="info-persona-data">
+                                <p class="card-label">ultima sessione</p>
+                                <p class="card-value">12/07</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget-button">
+                        <a href="pazienti.html"><button>Visualizza l'archivio pazienti</button></a>
+                    </div>
+                </div>
+
+                <div class="widget" id="entrate-mensili">
+                    <div>
+                        <div class="widget-header">
+                            <span class="widget-accent-dot"></span>
+                            <h2>Fatturazione mensile</h2>
+                        </div>
+                        <div class="widget-divider"></div>
+
+                        <div class="quota-block">
+                            <p class="quota-sublabel">Entrate stimate questo mese</p>
+                            <p class="quota-amount">4000,00 €</p>
+                            <p class="quota-sub">Luglio 2025</p>
+                        </div>
+                    </div>
+
+                    <div class="widget-button">
+                        <a href="fatturazione.php"><button>Visualizza fatturazione completa</button></a>
+                    </div>
+                </div>
+
+            </div><!-- fine .widget-column-right -->
+
+        </div><!-- fine .hero-widgets -->
+    </div><!-- fine .hero -->
+
+</body>
+
+</html>

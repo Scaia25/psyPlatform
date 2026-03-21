@@ -1,0 +1,152 @@
+/* agenda.css */
+@import url('base.css');
+
+/* ===========================
+   AGENDA CONTAINER
+=========================== */
+.agenda {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    animation: fadeUp 0.4s ease 0.05s both;
+    box-shadow: 0 0 40px rgba(91, 156, 246, 0.06);
+}
+
+/* ===========================
+   WEEK NAVIGATION
+=========================== */
+.controllo-settimana {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.75rem;
+    gap: 1rem;
+}
+
+.controllo-settimana h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+.controllo-settimana button {
+    border-radius: 2rem;
+    background: transparent;
+    color: var(--text-muted);
+    padding: 0 1.2rem;
+    height: 2rem;
+    border: 1px solid var(--border);
+    font-size: 0.82rem;
+    font-family: "Host Grotesk", sans-serif;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+
+.controllo-settimana button:hover {
+    color: var(--text);
+    border-color: var(--border-hover);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* ===========================
+   WEEK TABLE
+=========================== */
+.struttura-agenda {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0.6rem;
+    table-layout: fixed;
+}
+
+/* Day name row */
+#giorni-settimana td {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    padding: 0 0 0.6rem;
+}
+
+/* Events row */
+#eventi td {
+    background: var(--bg-inner);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem 0.75rem;
+    vertical-align: top;
+    min-height: 9rem;
+    height: 9rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    transition: border-color var(--transition), background var(--transition);
+}
+
+#eventi td:hover {
+    border-color: var(--border-hover);
+    background: #2c2c32;
+}
+
+/* Today highlight */
+#eventi td.oggi {
+    border-color: var(--accent);
+    background: rgba(91, 156, 246, 0.06);
+}
+
+#giorni-settimana td.oggi {
+    color: var(--accent);
+}
+
+.evento {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    background: rgba(91, 156, 246, 0.08);
+    border: 1px solid rgba(91, 156, 246, 0.25);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 0.65rem;
+    cursor: pointer;
+    transition: background var(--transition), border-color var(--transition);
+    margin-bottom: 0.5rem;
+}
+
+.evento:hover {
+    background: rgba(91, 156, 246, 0.14);
+    border-color: rgba(91, 156, 246, 0.5);
+}
+
+.evento-ora {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+}
+
+.evento-titolo {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+}
+
+.evento-tag {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--accent-3);
+    background: rgba(52, 211, 153, 0.1);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    border-radius: 2rem;
+    padding: 0.1rem 0.5rem;
+    align-self: flex-start;
+    margin-top: 0.1rem;
+}

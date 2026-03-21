@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PsyPlatform - Gestione prenotazioni</title>
+    <link rel="icon" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/prenotazioni.css">
+    <style>
+        /* psicologo: layout a colonna unica, più larga */
+        .prenotazioni-layout { grid-template-columns: 1fr; }
+
+        .stats-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            animation: fadeUp 0.4s ease 0.05s both;
+        }
+
+        .stat-chip {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 0.75rem 1.2rem;
+            flex: 1;
+        }
+
+        .stat-dot {
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .stat-chip .stat-num {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+
+        .stat-chip .stat-label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            font-weight: 700;
+        }
+
+        .stat-attesa   .stat-dot { background: var(--accent-4); }
+        .stat-attesa   .stat-num { color: var(--accent-4); }
+        .stat-conf     .stat-dot { background: var(--accent-3); }
+        .stat-conf     .stat-num { color: var(--accent-3); }
+        .stat-tot      .stat-dot { background: var(--accent-2); }
+        .stat-tot      .stat-num { color: var(--accent-2); }
+
+        /* wider card fields for psicologo view */
+        .field-paziente { flex: 1; min-width: 0; }
+        .field-contatto { flex: 0 0 11rem; min-width: 0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a class="header-logo" href="../../../index.html">PsyPlatform</a>
+        <div class="menu">
+            <div class="sections-menu">
+                <span id="user">Dott. Luigi Verdi</span>
+                <div class="v-divider"></div>
+                <a href="../../../index.html">Home</a>
+                <a href="dashboard.php">Dashboard</a>
+                <a href="agenda.php">Agenda</a>
+                <a href="prenotazioni-psicologo.html">Prenotazioni</a>
+                <a href="pazienti.html">Pazienti</a>
+                <a href="fatturazione.php">Fatturazione</a>
+                <a href="contatti.php">Assistenza</a>
+            </div>
+            <div class="menu-buttons">
+                <a href="profilo.html"><button>Il mio profilo</button></a>
+                <a href="../../backend/logout.php"><button id="logoutBtn">Disconnettiti</button></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="page-header">
+            <h1>Gestione prenotazioni</h1>
+            <p>Accetta, rifiuta o cancella le richieste dei tuoi pazienti</p>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-row" id="stats-row">
+            <!-- renderizzate via JS -->
+        </div>
+
+        <div class="prenotazioni-layout">
+            <div class="panel panel-lista">
+                <div class="panel-header">
+                    <span class="panel-dot"></span>
+                    <h2>Tutte le prenotazioni</h2>
+                </div>
+                <div class="panel-divider"></div>
+
+                <div class="filtri-tabs">
+                    <button class="tab-btn active" onclick="filtra('tutte', this)">Tutte</button>
+                    <button class="tab-btn" onclick="filtra('attesa', this)">In attesa</button>
+                    <button class="tab-btn" onclick="filtra('confermata', this)">Confermate</button>
+                    <button class="tab-btn" onclick="filtra('rifiutata', this)">Rifiutate</button>
+                    <button class="tab-btn" onclick="filtra('cancellata', this)">Cancellate</button>
+                </div>
+
+                <div class="lista-prenotazioni" id="lista-prenotazioni">
+                    <!-- renderizzata via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal conferma azione -->
+    <div class="modal-overlay hidden" id="modal-overlay">
+        <div class="modal">
+            <h3 id="modal-title">Conferma azione</h3>
+            <p id="modal-body">Sei sicuro?</p>
+            <div class="modal-actions">
+                <button class="btn-modal-cancel" onclick="chiudiModal()">Annulla</button>
+                <button class="btn-modal-confirm" id="modal-confirm-btn" onclick="confermaAzione()">Conferma</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // ── DATI DEMO ──
+    let prenotazioni = [
+        { id: 1, paziente: 'Mario Rossi',    email: 'm.rossi@email.com',    data: '2025-07-12', orario: '10:00', tipo: 'In presenza', stato: 'attesa' },
+        { id: 2, paziente: 'Anna Ferrari',   email: 'a.ferrari@email.com',  data: '2025-07-14', orario: '14:00', tipo: 'Online',      stato: 'attesa' },
+        { id: 3, paziente: 'Carla Russo',    email: 'c.russo@email.com',    data: '2025-07-15', orario: '09:00', tipo: 'In presenza', stato: 'confermata' },
+        { id: 4, paziente: 'Marco Neri',     email: 'm.neri@email.com',     data: '2025-07-10', orario: '16:00', tipo: 'Online',      stato: 'rifiutata' },
+        { id: 5, paziente: 'Sofia Gallo',    email: 's.gallo@email.com',    data: '2025-07-20', orario: '11:00', tipo: 'In presenza', stato: 'attesa' },
+        { id: 6, paziente: 'Luca Esposito',  email: 'l.esposito@email.com', data: '2025-06-28', orario: '15:00', tipo: 'Online',      stato: 'cancellata' },
+    ];
+
+    let filtroAttivo = 'tutte';
+    let azionePendente = null; // { id, azione }
+
+    // ── STATS ──
+    function renderStats() {
+        const attesa = prenotazioni.filter(p => p.stato === 'attesa').length;
+        const conf   = prenotazioni.filter(p => p.stato === 'confermata').length;
+        const tot    = prenotazioni.length;
+
+        document.getElementById('stats-row').innerHTML = `
+            <div class="stat-chip stat-attesa">
+                <span class="stat-dot"></span>
+                <div>
+                    <div class="stat-num">${attesa}</div>
+                    <div class="stat-label">In attesa</div>
+                </div>
+            </div>
+            <div class="stat-chip stat-conf">
+                <span class="stat-dot"></span>
+                <div>
+                    <div class="stat-num">${conf}</div>
+                    <div class="stat-label">Confermate</div>
+                </div>
+            </div>
+            <div class="stat-chip stat-tot">
+                <span class="stat-dot"></span>
+                <div>
+                    <div class="stat-num">${tot}</div>
+                    <div class="stat-label">Totali</div>
+                </div>
+            </div>
+        `;
+    }
+
+    // ── RENDER LISTA ──
+    function render() {
+        renderStats();
+
+        const lista = document.getElementById('lista-prenotazioni');
+        const filtrate = filtroAttivo === 'tutte'
+            ? prenotazioni
+            : prenotazioni.filter(p => p.stato === filtroAttivo);
+
+        if (filtrate.length === 0) {
+            lista.innerHTML = `<div class="empty-state"><div class="empty-icon">📋</div>Nessuna prenotazione in questa categoria</div>`;
+            return;
+        }
+
+        lista.innerHTML = filtrate.map((p, i) => {
+            const dataFmt = new Date(p.data).toLocaleDateString('it-IT', { day:'2-digit', month:'short', year:'numeric' });
+            const isAttesa    = p.stato === 'attesa';
+            const isGestibile = p.stato === 'attesa' || p.stato === 'confermata';
+
+            return `
+            <div class="prenotazione-card stato-${p.stato}" style="animation-delay:${i * 0.04}s">
+                <div class="card-field field-data">
+                    <span class="card-field-label">Data</span>
+                    <span class="card-field-value">${dataFmt}</span>
+                </div>
+                <div class="card-field field-orario">
+                    <span class="card-field-label">Orario</span>
+                    <span class="card-field-value">${p.orario}</span>
+                </div>
+                <div class="card-field field-paziente">
+                    <span class="card-field-label">Paziente</span>
+                    <span class="card-field-value">${p.paziente}</span>
+                </div>
+                <div class="badge-stato">
+                    <span class="badge badge-${p.stato}">${labelStato(p.stato)}</span>
+                </div>
+                <div class="card-actions">
+                    ${isAttesa ? `
+                        <button class="btn-action btn-accetta" onclick="apriModal(${p.id}, 'accetta')">Accetta</button>
+                        <button class="btn-action btn-rifiuta" onclick="apriModal(${p.id}, 'rifiuta')">Rifiuta</button>
+                    ` : ''}
+                    ${isGestibile ? `
+                        <button class="btn-action btn-cancella" onclick="apriModal(${p.id}, 'cancella')">Cancella</button>
+                    ` : ''}
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    function labelStato(s) {
+        return { attesa:'In attesa', confermata:'Confermata', rifiutata:'Rifiutata', cancellata:'Cancellata' }[s] || s;
+    }
+
+    // ── FILTRO ──
+    function filtra(stato, el) {
+        filtroAttivo = stato;
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        el.classList.add('active');
+        render();
+    }
+
+    // ── MODAL ──
+    const configModal = {
+        accetta:  { title: 'Accetta prenotazione', body: 'Vuoi confermare la prenotazione? Il paziente verrà notificato.', btn: 'Accetta', color: '#34d399' },
+        rifiuta:  { title: 'Rifiuta prenotazione', body: 'Sei sicuro di voler rifiutare questa richiesta? Il paziente verrà notificato.', btn: 'Rifiuta', color: '#f87171' },
+        cancella: { title: 'Cancella prenotazione', body: 'Sei sicuro di voler cancellare questa prenotazione? L\'azione non può essere annullata.', btn: 'Cancella', color: '#ef4444' },
+    };
+
+    function apriModal(id, azione) {
+        azionePendente = { id, azione };
+        const cfg = configModal[azione];
+        document.getElementById('modal-title').textContent = cfg.title;
+        document.getElementById('modal-body').textContent  = cfg.body;
+        const btn = document.getElementById('modal-confirm-btn');
+        btn.textContent = cfg.btn;
+        btn.style.background = cfg.color;
+        document.getElementById('modal-overlay').classList.remove('hidden');
+    }
+
+    function chiudiModal() {
+        azionePendente = null;
+        document.getElementById('modal-overlay').classList.add('hidden');
+    }
+
+    function confermaAzione() {
+        if (!azionePendente) return;
+        const { id, azione } = azionePendente;
+        const p = prenotazioni.find(x => x.id === id);
+        if (!p) return;
+
+        const nuovoStato = { accetta: 'confermata', rifiuta: 'rifiutata', cancella: 'cancellata' }[azione];
+        p.stato = nuovoStato;
+
+        const toastMsg = {
+            accetta:  'Prenotazione accettata',
+            rifiuta:  'Prenotazione rifiutata',
+            cancella: 'Prenotazione cancellata',
+        };
+
+        chiudiModal();
+        render();
+    }
+
+    // ── INIT ──
+    document.getElementById('modal-overlay').addEventListener('click', function(e) {
+        if (e.target === this) chiudiModal();
+    });
+
+    render();
+    </script>
+
+</body>
+</html>

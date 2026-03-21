@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PsyPlatform - Il mio profilo</title>
+    <link rel="icon" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/profilo.css">
+</head>
+<body>
+
+    <header>
+        <a class="header-logo" href="../../../index.html">PsyPlatform</a>
+        <div class="menu">
+            <div class="sections-menu">
+                <span id="user">Mario Rossi</span>
+                <div class="v-divider"></div>
+                <a href="../../../index.html">Home</a>
+                <a href="dashboard.php">Dashboard</a>
+                <a href="agenda.php">Agenda</a>
+                <a href="psicologi.php">Psicologi</a>
+                <a href="fatturazione.php">Fatturazione</a>
+                <a href="contatti.php">Assistenza</a>
+            </div>
+            <div class="menu-buttons">
+                <a href="profilo.html"><button>Il mio profilo</button></a>
+                <a href="../../backend/logout.php"><button id="logoutBtn">Disconnettiti</button></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <p class="page-title" style="font-size:1.9rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.4rem;animation:fadeUp .4s ease both">Il mio profilo</p>
+        <p class="page-subtitle" style="color:var(--text-muted);font-size:.9rem;margin-bottom:2rem;animation:fadeUp .4s ease .05s both">Gestisci i tuoi dati personali e le preferenze sulla privacy</p>
+        <div class="page-divider" style="height:1px;background:var(--border);margin-bottom:2rem"></div>
+
+        <div class="profilo-grid">
+
+            <!-- ══════ DATI PERSONALI ══════ -->
+            <div class="profilo-section">
+                <div class="section-header">
+                    <span class="section-dot blue"></span>
+                    <span class="section-title">Dati personali</span>
+                </div>
+                <div class="section-divider"></div>
+
+                <form id="form-dati" action="aggiorna-profilo.php" method="post">
+                    <div class="profilo-fields">
+                        <div class="field-group">
+                            <label class="field-label" for="nome">Nome</label>
+                            <input class="field-input" type="text" id="nome" name="nome" value="Mario" required>
+                        </div>
+                        <div class="field-group">
+                            <label class="field-label" for="cognome">Cognome</label>
+                            <input class="field-input" type="text" id="cognome" name="cognome" value="Rossi" required>
+                        </div>
+                        <div class="field-group full">
+                            <label class="field-label">Email</label>
+                            <div class="field-readonly">
+                                m.rossi@email.com
+                                <span class="field-readonly-badge">non modificabile</span>
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <label class="field-label" for="provincia">Provincia</label>
+                            <input class="field-input" type="text" id="provincia" name="provincia" value="BG - Bergamo">
+                        </div>
+                    </div>
+
+                    <div class="section-actions">
+                        <button class="btn-save" type="submit">Salva modifiche</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- ══════ SICUREZZA ══════ -->
+            <div class="profilo-section">
+                <div class="section-header">
+                    <span class="section-dot purple"></span>
+                    <span class="section-title">Sicurezza account</span>
+                </div>
+                <div class="section-divider"></div>
+
+                <form id="form-password" action="cambia-password.php" method="post">
+                    <div class="profilo-fields single">
+                        <div class="field-group">
+                            <label class="field-label" for="pw-attuale">Password attuale</label>
+                            <input class="field-input" type="password" id="pw-attuale" name="password_attuale" placeholder="••••••••••" required>
+                        </div>
+                        <div class="field-group">
+                            <label class="field-label" for="pw-nuova">Nuova password</label>
+                            <input class="field-input" type="password" id="pw-nuova" name="password_nuova" placeholder="Min. 8 caratteri" required>
+                        </div>
+                        <div class="field-group">
+                            <label class="field-label" for="pw-conferma">Conferma nuova password</label>
+                            <input class="field-input" type="password" id="pw-conferma" name="password_conferma" placeholder="Ripeti la nuova password" required>
+                        </div>
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn-save" type="submit">Aggiorna password</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- ══════ CONSENSI PRIVACY ══════ -->
+            <div class="profilo-section profilo-col-full">
+                <div class="section-header">
+                    <span class="section-dot green"></span>
+                    <span class="section-title">Consensi privacy — Art. 7 GDPR (Reg. UE 2016/679)</span>
+                </div>
+                <div class="section-divider"></div>
+
+                <form id="form-consensi" action="aggiorna-consensi.php" method="post">
+                    <div class="consensi-list">
+
+                        <div class="consenso-row">
+                            <div class="consenso-info">
+                                <span class="consenso-titolo">Trattamento dati per l'erogazione del servizio</span>
+                                <span class="consenso-desc">I tuoi dati personali (nome, email, provincia) sono trattati per permetterti di accedere e utilizzare PsyPlatform. Base giuridica: esecuzione del contratto — Art. 6(1)(b) GDPR.</span>
+                                <span class="consenso-badge-obbligatorio">Necessario</span>
+                            </div>
+                            <div class="toggle-wrap">
+                                <label class="toggle">
+                                    <input type="checkbox" name="consenso_servizio" checked disabled>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="consenso-row">
+                            <div class="consenso-info">
+                                <span class="consenso-titolo">Comunicazioni di servizio transazionali</span>
+                                <span class="consenso-desc">Email relative a prenotazioni, promemoria appuntamenti e notifiche di sistema direttamente correlate all'uso della piattaforma. Base giuridica: legittimo interesse — Art. 6(1)(f) GDPR.</span>
+                                <span class="consenso-badge-obbligatorio">Necessario</span>
+                            </div>
+                            <div class="toggle-wrap">
+                                <label class="toggle">
+                                    <input type="checkbox" name="consenso_transazionale" checked disabled>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="consenso-row">
+                            <div class="consenso-info">
+                                <span class="consenso-titolo">Analisi statistica anonimizzata dell'utilizzo</span>
+                                <span class="consenso-desc">Dati aggregati e anonimi sull'utilizzo della piattaforma (es. pagine visitate, funzionalità utilizzate) per migliorare il servizio. Nessun dato personale è condiviso con terze parti. Revocabile in qualsiasi momento.</span>
+                            </div>
+                            <div class="toggle-wrap">
+                                <label class="toggle">
+                                    <input type="checkbox" name="consenso_analytics" id="consenso_analytics" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="consenso-row">
+                            <div class="consenso-info">
+                                <span class="consenso-titolo">Comunicazioni commerciali e newsletter</span>
+                                <span class="consenso-desc">Aggiornamenti su nuove funzionalità, offerte speciali e contenuti informativi relativi al benessere psicologico. Puoi disiscriverti in qualsiasi momento tramite il link in calce ad ogni email. Base giuridica: consenso — Art. 6(1)(a) GDPR.</span>
+                            </div>
+                            <div class="toggle-wrap">
+                                <label class="toggle">
+                                    <input type="checkbox" name="consenso_marketing" id="consenso_marketing">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="gdpr-timestamp">
+                        Consensi aggiornati il 01/07/2025 alle 14:32 &mdash; IP registrato per obbligo normativo
+                    </div>
+
+                    <div class="section-actions">
+                        <button class="btn-save" type="submit">Salva preferenze</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- ══════ DIRITTI GDPR ══════ -->
+            <div class="profilo-section profilo-col-full">
+                <div class="section-header">
+                    <span class="section-dot orange"></span>
+                    <span class="section-title">I tuoi diritti — Artt. 15–22 GDPR</span>
+                </div>
+                <div class="section-divider"></div>
+
+                <div class="diritti-grid">
+
+                    <div class="diritto-card">
+                        <span class="diritto-icon">📋</span>
+                        <span class="diritto-titolo">Diritto di accesso — Art. 15</span>
+                        <span class="diritto-desc">Puoi richiedere una copia di tutti i dati personali che trattiamo su di te, incluse le finalità del trattamento e i destinatari dei dati.</span>
+                        <button class="btn-diritto" type="button" onclick="richiedDati('accesso')">Richiedi copia dei dati</button>
+                    </div>
+
+                    <div class="diritto-card">
+                        <span class="diritto-icon">📦</span>
+                        <span class="diritto-titolo">Portabilità dei dati — Art. 20</span>
+                        <span class="diritto-desc">Puoi ricevere i tuoi dati in formato strutturato e leggibile da macchina (JSON/CSV) per trasferirli ad un altro titolare del trattamento.</span>
+                        <button class="btn-diritto" type="button" onclick="richiedDati('portabilita')">Esporta i miei dati</button>
+                    </div>
+
+                    <div class="diritto-card">
+                        <span class="diritto-icon">✏️</span>
+                        <span class="diritto-titolo">Rettifica — Art. 16</span>
+                        <span class="diritto-desc">Hai il diritto di correggere dati inesatti o incompleti che ti riguardano. Puoi farlo direttamente dalla sezione "Dati personali" oppure contattando il nostro DPO.</span>
+                        <button class="btn-diritto" type="button" onclick="document.getElementById('nome').focus()">Modifica i dati</button>
+                    </div>
+
+                    <div class="diritto-card">
+                        <span class="diritto-icon">🚫</span>
+                        <span class="diritto-titolo">Opposizione al trattamento — Art. 21</span>
+                        <span class="diritto-desc">Puoi opporti al trattamento basato su legittimo interesse, inclusa la profilazione. Per opposizioni specifiche contatta il Titolare del trattamento.</span>
+                        <button class="btn-diritto" type="button" onclick="richiedDati('opposizione')">Invia richiesta</button>
+                    </div>
+
+                </div>
+
+                <div class="gdpr-timestamp" style="margin-top:1.25rem">
+                    Titolare del trattamento: PsyPlatform S.r.l. &mdash; DPO: privacy@psyplatform.it &mdash; Le richieste sono evase entro 30 giorni (Art. 12 GDPR)
+                </div>
+            </div>
+
+            <!-- ══════ ZONA PERICOLO ══════ -->
+            <div class="profilo-section profilo-col-full danger-zone">
+                <div class="section-header">
+                    <span class="section-dot red"></span>
+                    <span class="section-title">Eliminazione account e dati personali — Art. 17 GDPR</span>
+                </div>
+                <div class="section-divider"></div>
+
+                <p class="danger-desc">
+                    Hai il diritto di ottenere la cancellazione dei tuoi dati personali (<strong>«diritto all'oblio»</strong>) quando non sono più necessari rispetto alle finalità per cui sono stati raccolti, o quando revochi il consenso su cui si basa il trattamento. La cancellazione sarà <strong>permanente e irreversibile</strong>.
+                </p>
+
+                <div class="danger-checklist">
+                    <div class="danger-check-item">Il tuo account verrà disattivato immediatamente</div>
+                    <div class="danger-check-item">Tutti i dati personali saranno eliminati entro 30 giorni (Art. 17 GDPR)</div>
+                    <div class="danger-check-item">Le fatture saranno anonimizzate e conservate per obbligo fiscale (10 anni, D.P.R. 633/1972)</div>
+                    <div class="danger-check-item">I dati condivisi con terzi saranno notificati per la cancellazione (Art. 19 GDPR)</div>
+                    <div class="danger-check-item">Riceverai email di conferma con il riferimento della richiesta</div>
+                </div>
+
+                <div class="danger-actions">
+                    <p class="danger-note">
+                        Per esercitare altri diritti senza eliminare l'account (es. limitazione del trattamento — Art. 18) contatta il DPO all'indirizzo <strong style="color:var(--text)">privacy@psyplatform.it</strong>.
+                    </p>
+                    <button class="btn-danger" type="button" id="btnEliminaAccount">
+                        Elimina il mio account
+                    </button>
+                </div>
+            </div>
+
+        </div><!-- fine .profilo-grid -->
+    </div><!-- fine .hero -->
+
+
+    <!-- ══════════════════════════════
+         MODAL ELIMINAZIONE — 2 step
+    ══════════════════════════════ -->
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal">
+            <div class="modal-icon">⚠️</div>
+            <div class="modal-title" id="modalTitle">Conferma eliminazione account</div>
+            <p class="modal-body">
+                Stai per richiedere la <strong>cancellazione permanente</strong> di tutti i tuoi dati personali da PsyPlatform. Questa operazione non può essere annullata. Ai sensi dell'Art. 17 GDPR, i dati saranno eliminati entro 30 giorni dalla conferma.
+            </p>
+
+            <!-- Step 1: checkbox -->
+            <div class="modal-confirm-check" id="checkWrap">
+                <input type="checkbox" id="checkConferma">
+                <label for="checkConferma">
+                    Ho letto e compreso le conseguenze. Voglio procedere con l'eliminazione <strong>permanente e irreversibile</strong> del mio account e di tutti i miei dati personali.
+                </label>
+            </div>
+
+            <!-- Step 2: digita ELIMINA -->
+            <div class="modal-confirm-input-wrap" id="inputWrap">
+                <label class="modal-confirm-input-label" for="inputConferma">
+                    Per confermare, scrivi <span>ELIMINA</span> nel campo qui sotto
+                </label>
+                <input class="modal-confirm-input" type="text" id="inputConferma" placeholder="ELIMINA" autocomplete="off">
+            </div>
+
+            <div class="modal-buttons">
+                <button class="btn-modal-cancel" type="button" id="btnAnnullaModal">Annulla</button>
+                <button class="btn-modal-confirm" type="button" id="btnConfermaEliminazione">Elimina definitivamente</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // ── Richieste diritti GDPR ──
+        function richiedDati(tipo) {
+            const labels = {
+                accesso:     'Richiesta di accesso ai dati inviata. Riceverai risposta entro 30 giorni.',
+                portabilita: 'Exportazione dati avviata. Riceverai il file via email entro 72 ore.',
+                opposizione: 'Richiesta di opposizione al trattamento inviata al DPO.'
+            };
+            // Placeholder: qui collegherai il tuo script PHP
+            alert(labels[tipo] || 'Richiesta inviata.');
+        }
+
+        // ── Modal eliminazione ──
+        const overlay        = document.getElementById('modalOverlay');
+        const btnApri        = document.getElementById('btnEliminaAccount');
+        const btnAnnulla     = document.getElementById('btnAnnullaModal');
+        const btnConferma    = document.getElementById('btnConfermaEliminazione');
+        const checkConferma  = document.getElementById('checkConferma');
+        const inputWrap      = document.getElementById('inputWrap');
+        const inputConferma  = document.getElementById('inputConferma');
+
+        function apriModal() {
+            overlay.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function chiudiModal() {
+            overlay.classList.remove('visible');
+            document.body.style.overflow = '';
+            // Reset stato
+            checkConferma.checked = false;
+            inputWrap.classList.remove('visible');
+            inputConferma.value = '';
+            btnConferma.classList.remove('active');
+        }
+
+        function aggiornaStato() {
+            if (checkConferma.checked) {
+                inputWrap.classList.add('visible');
+            } else {
+                inputWrap.classList.remove('visible');
+                inputConferma.value = '';
+                btnConferma.classList.remove('active');
+            }
+        }
+
+        function verificaInput() {
+            if (checkConferma.checked && inputConferma.value.trim().toUpperCase() === 'ELIMINA') {
+                btnConferma.classList.add('active');
+            } else {
+                btnConferma.classList.remove('active');
+            }
+        }
+
+        btnApri.addEventListener('click', apriModal);
+        btnAnnulla.addEventListener('click', chiudiModal);
+        checkConferma.addEventListener('change', aggiornaStato);
+        inputConferma.addEventListener('input', verificaInput);
+
+        // Chiudi cliccando fuori dal modal
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) chiudiModal();
+        });
+
+        // Il bottone finale — il tuo script PHP va collegato qui
+        btnConferma.addEventListener('click', () => {
+            if (!btnConferma.classList.contains('active')) return;
+            // Placeholder: sostituisci con la chiamata al tuo script di eliminazione
+            // es: document.getElementById('form-elimina').submit();
+            alert('Richiesta di eliminazione inviata. Riceverai una email di conferma.');
+            chiudiModal();
+        });
+
+        // Chiudi con ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') chiudiModal();
+        });
+    </script>
+
+</body>
+</html>

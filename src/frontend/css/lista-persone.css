@@ -1,0 +1,122 @@
+/* lista-persone.css — psicologi.php & pazienti.html */
+@import url('base.css');
+
+/* ===========================
+   PAGE HEADER
+=========================== */
+.page-title {
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+    animation: fadeUp 0.4s ease both;
+}
+
+.page-subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.4s ease 0.05s both;
+}
+
+/* ===========================
+   LISTA
+=========================== */
+.lista-psicologi,
+.lista-pazienti {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    animation: fadeUp 0.4s ease 0.1s both;
+}
+
+/* ===========================
+   CARD PERSONA / PAZIENTE
+=========================== */
+.persona,
+.paziente {
+    display: flex;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.1rem 1.4rem;
+    gap: 0.5rem;
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.persona:hover,
+.paziente:hover {
+    border-color: var(--border-hover);
+    background: #222226;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+
+/* ===========================
+   INFO FIELDS
+=========================== */
+.infoPersona,
+.infoPaziente {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.infoPersona { flex: 0 0 10rem; }
+.infoPersona.info-email { flex: 1; min-width: 0; }
+.infoPersona.info-provincia { flex: 0 0 8rem; }
+.infoPersona.info-indirizzo { flex: 1; }
+
+.infoPaziente { flex: 0 0 12rem; }
+.infoPaziente.info-email { flex: 1; min-width: 0; }
+
+.info-field-label {
+    font-size: 0.58rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+}
+
+.info-field-value {
+    font-size: 0.88rem;
+    color: var(--text);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ===========================
+   CONTATTA BUTTON
+=========================== */
+.contatta-persona,
+.contattoPaziente {
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.contatta-persona a,
+.contattoPaziente a { text-decoration: none; }
+
+.contatta-persona button,
+.contattoPaziente button {
+    border-radius: 2rem;
+    background: transparent;
+    color: var(--accent-3);
+    padding: 0 1.2rem;
+    height: 2rem;
+    border: 1px solid rgba(52,211,153,0.35);
+    font-size: 0.82rem;
+    font-family: "Host Grotesk", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+
+.contatta-persona button:hover,
+.contattoPaziente button:hover {
+    background: rgba(52,211,153,0.1);
+    border-color: var(--accent-3);
+}

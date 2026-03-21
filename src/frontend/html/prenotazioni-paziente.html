@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PsyPlatform - Le mie prenotazioni</title>
+    <link rel="icon" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/prenotazioni.css">
+</head>
+<body>
+
+    <header>
+        <a class="header-logo" href="../../../index.html">PsyPlatform</a>
+        <div class="menu">
+            <div class="sections-menu">
+                <span id="user">Mario Rossi</span>
+                <div class="v-divider"></div>
+                <a href="../../../index.html">Home</a>
+                <a href="dashboard.php">Dashboard</a>
+                <a href="agenda.php">Agenda</a>
+                <a href="prenotazioni-paziente.html">Prenotazioni</a>
+                <a href="psicologi.php">Psicologi</a>
+                <a href="fatturazione.php">Fatturazione</a>
+                <a href="contatti.php">Assistenza</a>
+            </div>
+            <div class="menu-buttons">
+                <a href="profilo.html"><button>Il mio profilo</button></a>
+                <a href="../../backend/logout.php"><button id="logoutBtn">Disconnettiti</button></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="page-header">
+            <h1>Le mie prenotazioni</h1>
+            <p>Prenota nuove sessioni e gestisci quelle esistenti</p>
+        </div>
+
+        <div class="prenotazioni-layout">
+
+            <!-- ── COLONNA SINISTRA: nuova prenotazione ── -->
+            <div class="panel panel-nuova">
+                <div class="panel-header">
+                    <span class="panel-dot"></span>
+                    <h2>Nuova prenotazione</h2>
+                </div>
+                <div class="panel-divider"></div>
+
+                <div class="form-fields">
+                    <label for="sel-psicologo">Psicologo</label>
+                    <select id="sel-psicologo">
+                        <option value="" disabled selected>Seleziona uno psicologo</option>
+                        <option value="Luigi Verdi">Luigi Verdi — Clusone</option>
+                        <option value="Giovanni Bianchi">Giovanni Bianchi — Bergamo</option>
+                        <option value="Sara Colombo">Sara Colombo — Treviglio</option>
+                    </select>
+
+                    <label for="sel-data">Data</label>
+                    <input type="date" id="sel-data">
+
+                    <label for="sel-orario">Orario</label>
+                    <select id="sel-orario">
+                        <option value="" disabled selected>Seleziona un orario</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                    </select>
+                </div>
+
+                <div class="form-submit">
+                    <button class="btn-primary" onclick="nuovaPrenotazione()">Richiedi prenotazione</button>
+                </div>
+            </div>
+
+            <!-- ── COLONNA DESTRA: lista prenotazioni ── -->
+            <div class="panel panel-lista">
+                <div class="panel-header">
+                    <span class="panel-dot"></span>
+                    <h2>Storico prenotazioni</h2>
+                </div>
+                <div class="panel-divider"></div>
+
+                <div class="filtri-tabs">
+                    <button class="tab-btn active" onclick="filtra('tutte', this)">Tutte</button>
+                    <button class="tab-btn" onclick="filtra('attesa', this)">In attesa</button>
+                    <button class="tab-btn" onclick="filtra('confermata', this)">Confermate</button>
+                    <button class="tab-btn" onclick="filtra('rifiutata', this)">Rifiutate</button>
+                    <button class="tab-btn" onclick="filtra('cancellata', this)">Cancellate</button>
+                </div>
+
+                <div class="lista-prenotazioni" id="lista-prenotazioni">
+                    <!-- renderizzata via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal conferma cancellazione -->
+    <div class="modal-overlay hidden" id="modal-overlay">
+        <div class="modal">
+            <h3>Cancella prenotazione</h3>
+            <p>Sei sicuro di voler cancellare questa prenotazione? L'azione non può essere annullata.</p>
+            <div class="modal-actions">
+                <button class="btn-modal-cancel" onclick="chiudiModal()">Annulla</button>
+                <button class="btn-modal-confirm" onclick="confermaCancel()">Cancella</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // ── DATI DEMO ──
+    let prenotazioni = [
+        { id: 1, psicologo: 'Luigi Verdi', data: '2025-07-12', orario: '10:00', tipo: 'In presenza', stato: 'confermata' },
+        { id: 2, psicologo: 'Giovanni Bianchi', data: '2025-07-15', orario: '14:00', tipo: 'Online', stato: 'attesa' },
+        { id: 3, psicologo: 'Luigi Verdi', data: '2025-06-30', orario: '09:00', tipo: 'In presenza', stato: 'rifiutata' },
+        { id: 4, psicologo: 'Sara Colombo', data: '2025-06-10', orario: '16:00', tipo: 'Online', stato: 'cancellata' },
+        { id: 5, psicologo: 'Giovanni Bianchi', data: '2025-07-20', orario: '11:00', tipo: 'In presenza', stato: 'attesa' },
+    ];
+
+    let filtroAttivo = 'tutte';
+    let idDaCancellare = null;
+    let nextId = 6;
+
+    // ── RENDER ──
+    function render() {
+        const lista = document.getElementById('lista-prenotazioni');
+        const filtrate = filtroAttivo === 'tutte'
+            ? prenotazioni
+            : prenotazioni.filter(p => p.stato === filtroAttivo);
+
+        if (filtrate.length === 0) {
+            lista.innerHTML = `<div class="empty-state"><div class="empty-icon">📋</div>Nessuna prenotazione trovata</div>`;
+            return;
+        }
+
+        lista.innerHTML = filtrate.map((p, i) => {
+            const dataFmt = new Date(p.data).toLocaleDateString('it-IT', { day:'2-digit', month:'short', year:'numeric' });
+            const cancellabile = p.stato === 'attesa' || p.stato === 'confermata';
+
+            return `
+            <div class="prenotazione-card stato-${p.stato}" style="animation-delay:${i * 0.04}s">
+                <div class="card-field field-data">
+                    <span class="card-field-label">Data</span>
+                    <span class="card-field-value">${dataFmt}</span>
+                </div>
+                <div class="card-field field-orario">
+                    <span class="card-field-label">Orario</span>
+                    <span class="card-field-value">${p.orario}</span>
+                </div>
+                <div class="card-field field-psico">
+                    <span class="card-field-label">Psicologo</span>
+                    <span class="card-field-value">${p.psicologo}</span>
+                </div>
+                <div class="badge-stato">
+                    <span class="badge badge-${p.stato}">${labelStato(p.stato)}</span>
+                </div>
+                <div class="card-actions">
+                    ${cancellabile ? `<button class="btn-action btn-cancella" onclick="apriModal(${p.id})">Cancella</button>` : ''}
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    function labelStato(s) {
+        return { attesa:'In attesa', confermata:'Confermata', rifiutata:'Rifiutata', cancellata:'Cancellata' }[s] || s;
+    }
+
+    // ── FILTRO ──
+    function filtra(stato, el) {
+        filtroAttivo = stato;
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        el.classList.add('active');
+        render();
+    }
+
+    // ── NUOVA PRENOTAZIONE ──
+    function nuovaPrenotazione() {
+        const psicologo = document.getElementById('sel-psicologo').value;
+        const data      = document.getElementById('sel-data').value;
+        const orario    = document.getElementById('sel-orario').value;
+
+        if (!psicologo || !data || !orario) {
+            toast('Compila tutti i campi per procedere', 'error'); return;
+        }
+
+        const oggi = new Date(); oggi.setHours(0,0,0,0);
+        if (new Date(data) < oggi) {
+            toast('Seleziona una data futura', 'error'); return;
+        }
+
+        prenotazioni.unshift({ id: nextId++, psicologo, data, orario, stato: 'attesa' });
+
+        // reset form
+        document.getElementById('sel-psicologo').value = '';
+        document.getElementById('sel-data').value = '';
+        document.getElementById('sel-orario').value = '';
+
+        if (filtroAttivo !== 'tutte') {
+            filtra('tutte', document.querySelector('.tab-btn'));
+        } else {
+            render();
+        }
+        toast('Prenotazione inviata — in attesa di conferma', 'success');
+    }
+
+    // ── MODAL CANCELLAZIONE ──
+    function apriModal(id) {
+        idDaCancellare = id;
+        document.getElementById('modal-overlay').classList.remove('hidden');
+    }
+
+    function chiudiModal() {
+        idDaCancellare = null;
+        document.getElementById('modal-overlay').classList.add('hidden');
+    }
+
+    function confermaCancel() {
+        if (!idDaCancellare) return;
+        const p = prenotazioni.find(x => x.id === idDaCancellare);
+        if (p) p.stato = 'cancellata';
+        chiudiModal();
+        render();
+        toast('Prenotazione cancellata', 'info');
+    }
+
+    // ── TOAST ──
+    function toast(msg = 'info') {
+        const icons = { success: '✓', error: '✕', info: 'ℹ' };
+        const el = document.createElement('div');
+        document.body.appendChild(el);
+        setTimeout(() => { el.classList.add('hide'); setTimeout(() => el.remove(), 300); }, 3000);
+    }
+
+    // ── INIT ──
+    // set min date to today
+    const oggi = new Date().toISOString().split('T')[0];
+    document.getElementById('sel-data').min = oggi;
+
+    document.getElementById('modal-overlay').addEventListener('click', function(e) {
+        if (e.target === this) chiudiModal();
+    });
+
+    render();
+    </script>
+
+</body>
+</html>

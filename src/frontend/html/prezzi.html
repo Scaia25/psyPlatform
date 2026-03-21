@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PsyPlatform - prezzi</title>
+    <title>PsyPlatform - Prezzi</title>
     <link rel="icon" href="../images/logo.png">
-    <link rel="stylesheet" href="../css/prezzi.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,800;1,800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,500;1,500&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/form.css">
+    <style>
+        .hero { max-width: 520px; }
+    </style>
 </head>
-
 <body>
-    <header>
-        <label>PsyPlatform</label>
 
+    <header>
+        <a class="header-logo" href="../../../index.html">PsyPlatform</a>
         <div class="menu">
             <div class="sections-menu">
                 <a href="../../../index.html">Home</a>
-                <a href="psicologi.html">Per psicologi</a>
-                <a href="pazienti.html">Per pazienti</a>
+                <a href="funzionalità.html">Funzionalità</a>
                 <a href="prezzi.html">Prezzi</a>
-                <a href="contatti.html">Contatti</a>
+                <a href="contatti.php">Contatti</a>
             </div>
-
             <div class="menu-buttons">
-                <a href="accedi.html"><button>Accedi</button></a>
+                <a href="accedi.php"><button>Accedi</button></a>
                 <a href="registrati.html"><button>Registrati</button></a>
             </div>
         </div>
     </header>
 
     <div class="hero">
-        <h1>RICHIEDI UN PREVENTIVO PERSONALIZZATO</h1>
+        <h1>Preventivo personalizzato</h1>
         <p>Ti risponderemo entro 24 ore lavorative</p>
 
-        <form action="" method="">
-            <div class="form-fields">
-                <label for="name-surname"><strong>Nome e Cognome</strong></label>
-                <input type="text" name="name-surname" placeholder="Inserire il proprio nome e cognome" required>
+        <div class="form-card">
+            <form action="" method="post">
+                <div class="form-fields">
+                    <label for="name-surname">Nome e Cognome</label>
+                    <input type="text" id="name-surname" name="name-surname" placeholder="Inserisci il tuo nome e cognome" required>
 
-                <label for="studio-name"><strong>Nome dello studio</strong></label>
-                <input type="text" name="name" placeholder="Inserire il nome dello studio" required>
+                    <label for="studio-name">Nome dello studio</label>
+                    <input type="text" id="studio-name" name="studio-name" placeholder="Inserisci il nome dello studio" required>
 
-                <label for="email"><strong>Email</strong></label>
-                <input type="text" name="email" placeholder="Inserire la propria email" required>
-            </div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Inserisci la tua email" required>
+                </div>
 
-            <button type="submit">Invia richiesta</button>
-        </form>
+                <div class="form-submit">
+                    <button type="submit">Invia richiesta</button>
+                </div>
+            </form>
+        </div>
     </div>
-</body>
 
+</body>
 </html>

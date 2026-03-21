@@ -1,227 +1,519 @@
-/* body */
-body {
-    color: #ffffff;
-    background-color: #202024;
-    font-family: "Host Grotesk", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    margin: 0;
-    font-size: 1rem; /* Base 16px */
+/* ===========================
+   VARIABLES & RESET
+=========================== */
+:root {
+    --bg: #18181b;
+    --bg-card: #1f1f23;
+    --bg-inner: #27272c;
+    --bg-pill: #313137;
+    --border: rgba(255, 255, 255, 0.10);
+    --border-hover: rgba(255, 255, 255, 0.25);
+    --text: #f0f0f2;
+    --text-muted: #7a7a8c;
+    --accent-agenda: #5b9cf6;
+    --accent-prenotazioni: #a78bfa;
+    --accent-professionisti: #34d399;
+    --accent-quota: #fb923c;
+    --glow-agenda: rgba(91, 156, 246, 0.18);
+    --glow-prenotazioni: rgba(167, 139, 250, 0.18);
+    --glow-professionisti: rgba(52, 211, 153, 0.18);
+    --glow-quota: rgba(251, 146, 60, 0.18);
+    --radius-lg: 1rem;
+    --radius-md: 0.6rem;
+    --radius-sm: 0.4rem;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* header */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: var(--text);
+    background-color: var(--bg);
+    background-image:
+        radial-gradient(ellipse 60% 40% at 20% 0%, rgba(91, 156, 246, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 35% at 80% 100%, rgba(167, 139, 250, 0.05) 0%, transparent 70%);
+    font-family: "Host Grotesk", sans-serif;
+    font-style: normal;
+    font-size: 1rem;
+    min-height: 100vh;
+}
+
+/* ===========================
+   HEADER
+=========================== */
 header {
-    padding: 1.875rem 1.875rem 0 1.875rem; /* 30px 30px 0 30px */
+    padding: 1.4rem 2.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(24, 24, 27, 0.88);
+    backdrop-filter: blur(12px);
 }
 
-header label {
-    font-size: 1.25rem; /* 20px */
-}
-
-header a {
-    color: #ffffff;
-    text-decoration: none;
+.header-logo {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    color: var(--text);
 }
 
 .menu {
+    display: flex;
     align-items: center;
-    gap: 4.6875rem; /* 75px */
-    display: flex;
-}
-
-.menu-buttons {
-    display: flex;
-    gap: 1.25rem; /* 20px */
-}
-
-.menu-buttons button {
-    border-radius: 1.125rem; /* 18px */
-    background-color: #ffffff;
-    color: #202024;
-    width: 8rem; /* 128px */
-    height: 2.375rem; /* 38px */
-    border: 3px solid #ffffff; /* Mantenuto px per nitidezza */
-    transition: all ease 0.5s;
-    font-size: 1rem; /* 16px */
-    font-family: "Host Grotesk", sans-serif;
-}
-
-.menu-buttons #logoutBtn {
-    background-color: #ff6666;
-    color: #202024;
-    width: 8rem;
-    height: 2.375rem;
-    border: 3px solid #ff6666;
-    transition: all ease 0.5s;
-}
-
-.menu-buttons button:hover {
-    background-color: #202024;
-    color: #ffffff;
-    border: 3px solid #ffffff;
-}
-
-.menu-buttons #logoutBtn:hover {
-    background-color: #202024;
-    color:  #ff6666;
-    border: 3px solid #ff6666;
+    gap: 3rem;
 }
 
 .sections-menu {
     display: flex;
-    gap: 1.25rem; /* 20px */
     align-items: center;
+    gap: 0.15rem;
 }
 
-.sections-menu #user {  
-    align-items: center;
-    font-size: 0.9rem;
-    padding-left: 0.1rem;
-    padding-right: 0.1rem;
+.sections-menu #user {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding: 0 0.5rem;
 }
 
 .sections-menu .v-divider {
-  border-left: 0.15rem solid #e0e0e0;
-  height: 1.5rem;
-  margin: 0 0.9375rem; /* 15px */
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    height: 1.2rem;
+    margin: 0 0.75rem;
 }
 
-/* hero */
-.hero {
-    margin: 3rem 4rem 1.25rem 4rem; /* 20px -> 1.25rem */
+.sections-menu a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition), background var(--transition);
+}
+
+.sections-menu a:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.menu-buttons {
     display: flex;
-    flex-direction: column;
-    align-items: left;
+    gap: 0.6rem;
+}
+
+.menu-buttons a {
+    text-decoration: none;
+}
+
+.menu-buttons button {
+    border-radius: 2rem;
+    background: transparent;
+    color: var(--text);
+    padding: 0 1.2rem;
+    height: 2rem;
+    border: 1px solid var(--border-hover);
+    font-size: 0.83rem;
+    font-family: "Host Grotesk", sans-serif;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.menu-buttons button:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.menu-buttons #logoutBtn {
+    color: #ff6b6b;
+    border-color: rgba(255, 107, 107, 0.3);
+}
+
+.menu-buttons #logoutBtn:hover {
+    background: rgba(255, 107, 107, 0.08);
+    border-color: #ff6b6b;
+}
+
+/* ===========================
+   HERO
+=========================== */
+.hero {
+    padding: 2.5rem 2.5rem 3rem;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
 .hero-welcome {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.4s ease both;
 }
 
-.hero-welcome h1{
-    margin-bottom: 0.2rem;
+.hero-welcome h1 {
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.35rem;
 }
 
-.hero-welcome p{
-    margin-top: 0;
+.hero-welcome h1 em {
+    font-style: normal;
+    color: var(--accent-agenda);
 }
 
+.hero-welcome p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+}
+
+/* ===========================
+   WIDGET GRID — 3 COLONNE
+=========================== */
 .hero-widgets {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem; /* Mantenuto % come richiesto */
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.8fr;
+    gap: 1.5rem;
+    align-items: start;
 }
 
+/* Colonna destra: due widget impilati */
+.widget-column-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ===========================
+   WIDGET BASE
+=========================== */
 .widget {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-sizing: border-box;
-    padding: 2rem;
-    border: solid 1px #ffffff; /* Ottimizzato a 1px */
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3); /* Shadow in px */
+    padding: 1.6rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top-width: 2px;
+    border-radius: var(--radius-lg);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    animation: fadeUp 0.4s ease both;
 }
 
-.widget-column {
+#eventi-giornalieri {
+    border-top-color: var(--accent-agenda);
+    animation-delay: 0.05s;
+}
+
+#eventi-giornalieri:hover {
+    border-color: var(--accent-agenda);
+    border-top-width: 2px;
+    box-shadow: 0 0 40px var(--glow-agenda);
+}
+
+#prenotazioni {
+    border-top-color: var(--accent-prenotazioni);
+    animation-delay: 0.1s;
+}
+
+#prenotazioni:hover {
+    border-color: var(--accent-prenotazioni);
+    border-top-width: 2px;
+    box-shadow: 0 0 40px var(--glow-prenotazioni);
+}
+
+#professionisti {
+    border-top-color: var(--accent-professionisti);
+    animation-delay: 0.15s;
+}
+
+#professionisti:hover {
+    border-color: var(--accent-professionisti);
+    border-top-width: 2px;
+    box-shadow: 0 0 40px var(--glow-professionisti);
+}
+
+#entrate-mensili {
+    border-top-color: var(--accent-quota);
+    animation-delay: 0.2s;
+}
+
+#entrate-mensili:hover {
+    border-color: var(--accent-quota);
+    border-top-width: 2px;
+    box-shadow: 0 0 40px var(--glow-quota);
+}
+
+/* ===========================
+   WIDGET HEADER
+=========================== */
+.widget-header {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.widget-column .widget {
-    width: 100%;
-}
-
-.widget h2{
-    margin: 0;
-}
-
-.widget hr{
-    margin-left: 0;
-    width: 75%;
+    align-items: center;
+    gap: 0.55rem;
     margin-bottom: 1rem;
 }
 
-.widget-button  {
-    margin-top: 1rem;
+.widget-accent-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+#eventi-giornalieri .widget-accent-dot {
+    background: var(--accent-agenda);
+}
+
+#prenotazioni .widget-accent-dot {
+    background: var(--accent-prenotazioni);
+}
+
+#professionisti .widget-accent-dot {
+    background: var(--accent-professionisti);
+}
+
+#entrate-mensili .widget-accent-dot {
+    background: var(--accent-quota);
+}
+
+.widget h2 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--text);
+}
+
+.widget-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 1rem;
+}
+
+/* ===========================
+   CARD INTERNE
+=========================== */
+.evento,
+.prenotazione,
+.persona {
+    display: flex;
+    align-items: center;
+    background: var(--bg-inner);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.55rem;
+    gap: 0.2rem;
+    transition: border-color var(--transition), background var(--transition);
+}
+
+.evento:hover,
+.prenotazione:hover,
+.persona:hover {
+    border-color: var(--border-hover);
+    background: #2c2c32;
+}
+
+.evento:last-of-type,
+.prenotazione:last-of-type,
+.persona:last-of-type {
+    margin-bottom: 0;
+}
+
+/* ===========================
+   LABEL & VALUE
+=========================== */
+.card-label {
+    font-size: 0.58rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    margin-bottom: 0.18rem;
+}
+
+.card-value {
+    font-size: 0.86rem;
+    color: var(--text);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ===========================
+   CAMPI EVENTO
+=========================== */
+.info-nominativo {
+    flex: 0 0 8.5rem;
+}
+
+.info-email {
+    flex: 1;
+    min-width: 0;
+}
+
+.info-orario {
+    flex: 0 0 4rem;
+    text-align: right;
+}
+
+.info-orario .card-value {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--accent-agenda);
+}
+
+/* ===========================
+   CAMPI PRENOTAZIONE
+=========================== */
+.info-prenotazione-nominativo {
+    flex: 0 0 8.5rem;
+}
+
+.info-prenotazione-email {
+    flex: 1;
+    min-width: 0;
+}
+
+.info-prenotazione-data,
+.info-prenotazione-orario {
+    flex: 0 0 5.2rem;
+    background: var(--bg-pill);
+    padding: 0.3rem 0.5rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    margin-left: 0.3rem;
+}
+
+.info-prenotazione-data .card-value,
+.info-prenotazione-orario .card-value {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--accent-prenotazioni);
+}
+
+/* ===========================
+   CAMPI PERSONA
+=========================== */
+.info-persona-nominativo {
+    flex: 0 0 8.5rem;
+}
+
+.info-persona-email {
+    flex: 1;
+    margin-right: 3rem;
+    min-width: 0;
+}
+
+.info-persona-citta {
+    flex: 0 0 6rem;
+    text-align: left;
+}
+
+.info-persona-citta .card-value {
+    font-size: 0.78rem;
+    color: var(--accent-professionisti);
+}
+
+.info-persona-data {
+    flex: 0 0 5.2rem;
+    background: var(--bg-pill);
+    padding: 0.3rem 0.5rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    margin-left: 2rem;
+}
+
+.info-persona-data .card-value {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--accent-professionisti);
+}
+
+/* ===========================
+   QUOTA MENSILE
+=========================== */
+.quota-block {
+    margin: 0.75rem 0 0.5rem;
+}
+
+.quota-sublabel {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
+}
+
+.quota-amount {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--accent-quota);
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.quota-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+}
+
+/* ===========================
+   WIDGET BUTTON
+=========================== */
+.widget-button {
+    margin-top: 1.2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.widget-button a {
+    text-decoration: none;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .widget-button button {
-    border-radius: 1.125rem; /* 18px */
-    background-color: #ffffff;
-    color: #202024;
-    width: 15rem;
-    height: 2.375rem; /* 38px */
-    border: 3px solid #ffffff;
-    transition: all ease 0.5s;
-    font-size: 1rem; /* 16px */
+    border-radius: 2rem;
+    background: transparent;
+    color: var(--text-muted);
+    padding: 0 1.5rem;
+    height: 2rem;
+    border: 1px solid var(--border);
+    font-size: 0.8rem;
     font-family: "Host Grotesk", sans-serif;
-    background-image: linear-gradient(to right, #202024 50%, transparent 50%);
-    background-size: 200% 100%;
-    background-position: right bottom;
+    cursor: pointer;
+    transition: all var(--transition);
+    width: 100%;
+    max-width: 18rem;
 }
 
 .widget-button button:hover {
-    background-position: left bottom;
-    color: #ffffff;
-    border: 3px solid #ffffff;
+    color: var(--text);
+    border-color: var(--border-hover);
+    background: rgba(255, 255, 255, 0.04);
 }
 
-/* --- CARD INTERNE --- */
-.evento, .paziente, .prenotazione {
-    display: flex;
-    align-items: center;
-    background: #2a2a2e;
-    border-radius: 0.5rem;
-    padding: 0.8rem 1.2rem;
-    margin: 0.6rem 0;
-}
+/* ===========================
+   ANIMATIONS
+=========================== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
 
-.info-evento {
-    flex: 0 0 11rem; 
-}
-.info-evento:last-child {
-    flex: 0 0 5rem;
-}
-
-.infoPrenotazione {
-    flex: 0 0 11rem; 
-}
-.infoPrenotazione:nth-child(3), 
-.infoPrenotazione:nth-child(4) {
-    flex: 0 0 6rem;
-    background: #36363b;
-    padding: 0.4rem;
-    border-radius: 0.4rem;
-    text-align: center;
-    margin-right: 0.5rem;
-}
-
-.infoPaziente {
-    flex: 0 0 12rem;
-}
-
-.info-evento p:first-child, 
-.infoPrenotazione p:first-child, 
-.infoPaziente p:first-child {
-    font-size: 0.65rem;
-    color: #a0a0a0;
-    margin: 0 0 0.2rem 0;
-    text-transform: uppercase;
-    font-weight: 700;
-}
-
-.info-evento p:last-child, 
-.infoPrenotazione p:last-child, 
-.infoPaziente p:last-child {
-    font-size: 0.9rem;
-    color: #ffffff;
-    margin: 0;
-    font-weight: 500;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
